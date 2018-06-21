@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    // minlength: 4, // make this at least 12 in production
+    minlength: 4, // make this at least 12 in production
     maxlength: 25,
     validate: checkPasswordLength,
     msg: 'password is too weak',
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 });
 
 function checkPasswordLength(password) {
-  return password.length > 12;
+  return password.length > 5;
 }
 
 userSchema.pre('save', function(next) {
